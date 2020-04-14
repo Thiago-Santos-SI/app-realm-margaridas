@@ -68,17 +68,17 @@ export default class RegisterUser extends React.Component {
             behavior="padding"
             style={{ flex: 1, justifyContent: 'space-between' }}>
             <Mytextinput
-              placeholder="Enter Name"
+              placeholder="Nome do material"
               onChangeText={user_name => this.setState({ user_name })}
             />
             <Mytextinput
-              placeholder="Enter Contact No"
+              placeholder="Quantidade comprada"
               onChangeText={user_contact => this.setState({ user_contact })}
               maxLength={10}
               keyboardType="numeric"
             />
             <Mytextinput
-              placeholder="Enter Address"
+              placeholder="Preço comprado"
               onChangeText={user_address => this.setState({ user_address })}
               maxLength={225}
               numberOfLines={5}
@@ -86,7 +86,7 @@ export default class RegisterUser extends React.Component {
               style={{ textAlignVertical: 'top' }}
             />
             <Mybutton
-              title="Submit"
+              title="Adicionar"
               customClick={this.register_user.bind(this)}
             />
           </KeyboardAvoidingView>

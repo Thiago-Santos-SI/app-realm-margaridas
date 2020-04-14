@@ -1,60 +1,59 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import Mybutton from './components/Mybutton';
-import Mytext from './components/Mytext';
 import Realm from 'realm';
-import Page2 from "../Page2";
+import ViewAllUser from "./ViewAllUser";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Container } from './styles'
+
+import User from "../model/User";
 let realm;
 
 class HomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    realm = new Realm({
-      path: 'UserDatabase.realm',
-      schema: [
-        {
-          name: 'user_details',
-          properties: {
-            user_id: { type: 'int', default: 0 },
-            user_name: 'string',
-            user_contact: 'string',
-            user_address: 'string',
-          },
-        },
-      ],
-    });
+    super(props);
+    realm = new Realm({ path: 'UserDatabase.realm', schema: [User.schema],});
+
   }
+
 
   render() {
     return (
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: 'white',
-          flexDirection: 'column',
-        }}>
-        <Mytext text="RealM Example" />
-        <Mybutton
-          title="Register"
+
+      <Container
+        style={styles.View
+        }>
+
+          <Mybutton
+          title="Adicionar material"
           customClick={() => this.props.navigation.navigate('Register')}
         />
         <Mybutton
-          title="Update"
+          title="Atualizar material"
           customClick={() => this.props.navigation.navigate('Update')}
         />
         <Mybutton
-          title="View"
-          customClick={() => this.props.navigation.navigate('View')}
-        />
-        <Mybutton
-          title="View All"
+          title="Ver materiais"
           customClick={() => this.props.navigation.navigate('ViewAll')}
         />
         <Mybutton
-          title="Delete"
+          title="Deletar produtos"
           customClick={() => this.props.navigation.navigate('Delete')}
         />
-      </View>
+
+          <Mybutton
+              title="Calcular preço de produto"
+              customClick={() => this.props.navigation.navigate('calcula')}
+          />
+
+        <ViewAllUser>
+
+        </ViewAllUser>
+      </Container>
+
+
+
     );
   }
 }
@@ -62,5 +61,19 @@ class HomeScreen extends React.Component {
 HomeScreen.navigationOptions = {
     title: 'HomeScreen',
 };
+
+const styles = StyleSheet.create({
+    View: {
+        flex: 1,
+        backgroundColor: '#B25AE5',
+        flexDirection: 'column',
+    },
+    Text: {
+        alignItems:'center',
+        fontSize: 25,
+        color: '#000000',
+        fontWeight:'bold'
+    }
+});
 
 export default HomeScreen;

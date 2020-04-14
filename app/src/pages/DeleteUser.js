@@ -5,6 +5,9 @@ import Mytextinput from './components/Mytextinput';
 import Mybutton from './components/Mybutton';
 import Realm from 'realm';
 import HomeScreen from "./HomeScreen";
+import {deleteUserById } from "../Controllers/Controller"
+import Message from "../model/Message";
+
 let realm;
 export default class UpdateUser extends React.Component {
   constructor(props) {
@@ -13,7 +16,14 @@ export default class UpdateUser extends React.Component {
     this.state = {
       input_user_id: '',
     };
+    this.state = {
+        hero: this.props.hero
+      };
   }
+
+
+
+
    deleteUser = () => {
     var that = this;
     const { input_user_id } = this.state;
